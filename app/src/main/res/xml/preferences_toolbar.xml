@@ -4,21 +4,21 @@
     <PreferenceCategory
         android:title="@string/pref_toolbar_summon"/>
     <DropDownPreference
-        android:defaultValue="1"
+        android:defaultValue="2"
         android:key="mpro_toolbar_summon_fingers"
         android:title="@string/pref_toolbar_summon_fingers"
         android:entries="@array/swipe_fingers_count"
         android:entryValues="@array/swipe_fingers_count_values"
         app:useSimpleSummaryProvider="true" />
     <DropDownPreference
-        android:defaultValue="LEFT"
+        android:defaultValue="UP"
         android:key="mpro_toolbar_summon_direction"
         android:title="@string/pref_toolbar_summon_direction"
         android:entries="@array/swipe_direction"
         android:entryValues="@array/swipe_direction_values"
         app:useSimpleSummaryProvider="true" />
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="mpro_toolbar_summon_edge"
         android:summary="@string/use_multi_finger_to_disable"
         android:title="@string/pref_toolbar_summon_edge" />

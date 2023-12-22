@@ -192,15 +192,15 @@ public class ModulePreferences {
     }
 
     public int getToolbarSummonFingersCount() {
-        return Integer.parseInt(sp.getString("mpro_toolbar_summon_fingers", "1"));
+        return Integer.parseInt(sp.getString("mpro_toolbar_summon_fingers", "2"));
     }
 
     public SwipeDirection getToolbarSummonSwipeDirection() {
-        return SwipeDirection.valueOf(sp.getString("mpro_toolbar_summon_direction", "LEFT"));
+        return SwipeDirection.valueOf(sp.getString("mpro_toolbar_summon_direction", "UP"));
     }
 
     public boolean getToolbarSummonFromEdge() {
-        return sp.getBoolean("mpro_toolbar_summon_edge", true);
+        return sp.getBoolean("mpro_toolbar_summon_edge", false);
     }
 
     public boolean isLongPressOnTopSettingsEnabled() {
