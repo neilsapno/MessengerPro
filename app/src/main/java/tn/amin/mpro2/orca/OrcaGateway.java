@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -102,17 +103,21 @@ public class OrcaGateway {
      * Waits for Mailbox to be constructed and then stores it in a variable.
      */
     public void prepareToCaptureMailbox() {
-        final Class<?> MailboxConfig = XposedHelpers.findClass(OrcaClassNames.MAILBOX_CONFIG, classLoader);
+//        Mailboxinfo no longer has authData as parameter so we use AccountSession to get it instead
+        final Class<?> AccountSessionClass = XposedHelpers.findClass("com.facebook.msys.mci.AccountSession", classLoader);
         final Class<?> Mailbox = XposedHelpers.findClass(OrcaClassNames.MAILBOX, classLoader);
 
-        // MailboxConfig constructor is called before Mailbox constructor
-        XposedBridge.hookAllConstructors(MailboxConfig, new XC_MethodHook() {
-            @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                Logger.info("Captured mailbox configuration!");
-                authData = new AuthDataWrapper(param.args[1]);
+        for (Method method : AccountSessionClass.getDeclaredMethods()) {
+            if (method.getName().equals("createWithAuthData")) {
+                XposedBridge.hookMethod(method, new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        Logger.info("Captured mailbox configuration!");
+                        authData = new AuthDataWrapper(param.args[0]);
+                    }
+                });
             }
-        });
+        }
 
         XposedBridge.hookAllConstructors(Mailbox, new XC_MethodHook() {
             @Override

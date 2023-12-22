@@ -54,7 +54,7 @@ public class MailboxConnector {
         preDispatch(notificationScope -> {
             long time = System.currentTimeMillis() * 1000;
             Object[] disptachParams = new Object[] {
-                    9, 65540, threadKey, mailbox.get(), "", textMessage.content, null, null, null, null, null, null, textMessage.replyMessageId != null? 1: 0, 0, null, null, null, time, null, null, null, null, null, null, false, notificationScope
+                    9, 65540, threadKey, mailbox.get(), "", textMessage.content, null, null, null, null, null, null, textMessage.replyMessageId != null? 1: 0, 0, null, null, null, time, null, null, null, null, null, null, false, null, notificationScope
             };
 
             disptachParams[7] = Mention.joinRangeStarts(textMessage.mentions);
@@ -80,7 +80,7 @@ public class MailboxConnector {
         preDispatch(notificationScope -> {
             long time = System.currentTimeMillis();
             Object[] disptachParams = new Object[] {
-                    54, threadKey, mailbox.get(), reaction, messageId, time, null, null, null, notificationScope
+                    48, threadKey, mailbox.get(), reaction, messageId, time, null, null, null, notificationScope
             };
 
             try {
@@ -98,7 +98,7 @@ public class MailboxConnector {
         Logger.info("Sending sticker " + stickerId + "!");
 
         final Class<?> MailboxCoreJNI = XposedHelpers.findClass(OrcaClassNames.MAILBOX_CORE_JNI, classLoader);
-        final Set<Method> disptachList = XposedHilfer.findAllMethods(MailboxCoreJNI, "dispatchVIIIJJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        final Set<Method> disptachList = XposedHilfer.findAllMethods(MailboxCoreJNI, "dispatchVIIIJJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOZ");
         if (disptachList.size() != 1)
             Logger.error(new RuntimeException("dispatchList size (" + disptachList.size() + ") != 1"));
         final Method disptach = disptachList.iterator().next();
@@ -107,7 +107,7 @@ public class MailboxConnector {
             long time = System.currentTimeMillis() * 1000;
             try {
                 XposedBridge.invokeOriginalMethod(disptach, null, new Object[] {
-                        12, 0, 0, 65540, threadKey, stickerId, mailbox.get(), null, null, null, null, null, null, null, "", null, null, "", null, null, null, null, "You sent a sticker.", null, null, null, null, null, null, replyId, replyId != null? 1: 0, null, null, time, null, null, null, null, null, notificationScope
+                        12, 0, 0, 65540, threadKey, stickerId, mailbox.get(), null, null, null, null, null, null, null, "", null, null, "", null, null, null, null, "You sent a sticker.", null, null, null, null, null, null, replyId, replyId != null? 1: 0, null, null, time, null, null, null, null, null, notificationScope, true
                 });
             } catch (Throwable t) {
                 Logger.error(t);
@@ -150,8 +150,7 @@ public class MailboxConnector {
             long time = System.currentTimeMillis() * 1000;
             try {
                 XposedBridge.invokeOriginalMethod(disptach, null, new Object[] {
-//                        53, threadKey, mailbox.get(), orcaAttachment, "", "You sent a file.", null, null, time, null, notificationScope
-                        62, 65540, threadKey, mailbox.get(), orcaAttachment, "You sent a file.", replyId, replyId != null? 1: 0, null, null, null, time, null, null,  notificationScope, true
+                        55, 65540, threadKey, mailbox.get(), orcaAttachment, "You sent a file.", replyId, replyId != null? 1: 0, null, null, null, time, null, null,  notificationScope, true
                 });
             } catch (Throwable t) {
                 Logger.error(t);

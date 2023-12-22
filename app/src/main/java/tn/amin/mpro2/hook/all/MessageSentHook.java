@@ -16,8 +16,7 @@ import tn.amin.mpro2.orca.datatype.Mention;
 import tn.amin.mpro2.orca.datatype.TextMessage;
 
 public class MessageSentHook extends BaseHook {
-    public static final String DISPATCH_METHOD = "dispatchVIJOOOOOOOOOOOOOOOOOOOOOOO";
-//    public static final String DISPATCH_METHOD = "dispatchVIJOOOOOOOOOOOOOOOOOOOO";
+    public static final String DISPATCH_METHOD = "dispatchVIJOOOOOOOOOOOOOOOOOOOOOOOO";
 
     public MessageSentHook() {
         super();
