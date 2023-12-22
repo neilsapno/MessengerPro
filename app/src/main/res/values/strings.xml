@@ -138,7 +138,7 @@
     <string name="feature_color_theme">Customizes messenger color theme</string>
     <string name="theme">Theme</string>
     <string name="pref_category_ui">User Interface</string>
-    <string name="pref_color_theme">Custom color theme (experimental)</string>
+    <string name="pref_color_theme">Custom color theme</string>
     <string name="pref_adblocker">Block ads</string>
     <string name="apply">Apply</string>
     <string name="invalid_color">Invalid Color</string>
@@ -147,5 +147,5 @@
     <string name="pref_aiconfig_auth">Authentication Data</string>
     <string name="need_install_aiplugin">AI Plugin is not installed</string>
     <string name="pref_allow_other_command">Enable other people to use commands</string>
-    <string name="pref_color_theme_force">Apply color theme inside conversations</string>
+    <string name="pref_color_theme_force">Apply color theme inside conversations (unstable)</string>
 </resources>

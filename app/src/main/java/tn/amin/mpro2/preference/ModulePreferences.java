@@ -184,7 +184,7 @@ public class ModulePreferences {
     }
 
     public boolean getColorThemeForce() {
-        return sp.getBoolean("mpro_ui_color_theme_force", true);
+        return sp.getBoolean("mpro_ui_color_theme_force", false);
     }
 
     public boolean isToolbarButtonVisible(String key) {
