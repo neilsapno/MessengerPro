@@ -22,6 +22,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        applicationVariants.all{
+            variant ->
+                variant.outputs.each{
+                    output->
+                        def name = "mPro-v${variant.versionName}.apk"
+                        output.outputFileName = name
+                }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -34,7 +42,6 @@ android {
     }
 }
 
-// adb install C:\Users\Amin\Programmation\Android\MessengerPro2\app\build\outputs\apk\debug\app-debug.apk
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
