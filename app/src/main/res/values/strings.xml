@@ -53,6 +53,7 @@
     <string name="last_typing_userkey_description">The User Key of the person typing</string>
     <string name="last_typing_userkey">User Key</string>
     <string name="pref_disable_typing_indicator">Prevent typing indicator</string>
+    <string name="pref_disable_notification_removal">Prevent notification from disappearing on message unsent</string>
     <string name="pref_allow_logs">Allow verbose logs</string>
     <string name="title_activity_about">About Messenger Pro</string>
     <string name="next">Next</string>

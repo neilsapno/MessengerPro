@@ -45,6 +45,7 @@ public class OrcaUnobfuscator {
     private final HashMap<String, Integer> mUnobfuscatedApis = new HashMap<>();
 
     public static final String CLASS_TYPING_INDICATOR_DISPATCHER = "TypingIndicatorDispatcher";
+    public static final String CLASS_REMOVE_NOTIFICATION_ON_UNSENT = "RemoveNotificationOnUnsent";
     public static final String METHOD_MESSAGE_GETTEXT = "Message/getText";
     public static final String METHOD_MESSAGES_DECODER_DECODE = "MessagesDecoder/decode";
     public static final String METHOD_THREAD_THEME_INFO_FACTORY_CREATE = "ThreadThemeInfoFactory/create";
@@ -96,6 +97,16 @@ public class OrcaUnobfuscator {
                         pool.stringsContain("/t_st") &&
                                 pool.methodSignaturesContain("java.lang.System.arraycopy(java.lang.Object,int,java.lang.Object,int,int):void"))
                 .build());
+    }
+
+    public Class<?> loadRemoveNotificationOnUnsent() {
+        return loadClass(CLASS_REMOVE_NOTIFICATION_ON_UNSENT, new ClassFilter.Builder()
+                .setReferenceTypes(ReferenceTypes.builder().addMethodWithDetails().build())
+                .setReferenceFilter(pool ->
+                        pool.methodSignaturesContain("com.google.common.collect.ImmutableList.copyOf(java.util.Collection):com.google.common.collect.ImmutableList") &&
+                                pool.methodSignaturesContain("(java.lang.String,int):android.service.notification.StatusBarNotification"))
+                .build());
+
     }
 
     private Method loadMessagesDecoderDecode() {
@@ -496,6 +507,8 @@ public class OrcaUnobfuscator {
         Logger.verbose("Loading class " + CLASS_TYPING_INDICATOR_DISPATCHER);
         mUnobfuscatedClasses.put(CLASS_TYPING_INDICATOR_DISPATCHER, loadTypingIndicatorDispatcher());
 
+        Logger.verbose("Loading class " + CLASS_REMOVE_NOTIFICATION_ON_UNSENT);
+        mUnobfuscatedClasses.put(CLASS_REMOVE_NOTIFICATION_ON_UNSENT, loadRemoveNotificationOnUnsent());
         Logger.verbose("Loading method " + METHOD_MESSAGE_GETTEXT);
         mUnobfuscatedMethods.put(METHOD_MESSAGE_GETTEXT, loadMessageMethod("text"));
         Logger.verbose("Loading method " + METHOD_MESSAGES_DECODER_DECODE);

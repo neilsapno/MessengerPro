@@ -66,4 +66,9 @@
         android:key="Ads/supplier"
         android:defaultValue="null"
         app:useSimpleSummaryProvider="true" />
+    <EditTextPreference
+        android:title="RemoveNotificationOnUnsent"
+        android:key="RemoveNotificationOnUnsent"
+        android:defaultValue="null"
+        app:useSimpleSummaryProvider="true" />
 </PreferenceScreen>

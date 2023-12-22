@@ -13,6 +13,7 @@ import tn.amin.mpro2.features.state.DefaultCameraFeature;
 import tn.amin.mpro2.features.state.FormattingFeature;
 import tn.amin.mpro2.features.state.MediaTranscodeFeature;
 import tn.amin.mpro2.features.state.UnseenFeature;
+import tn.amin.mpro2.features.state.UnsentNotificationRemoveFeature;
 import tn.amin.mpro2.features.state.UntypingFeature;
 import tn.amin.mpro2.features.tasker.TaskerEventMessageFeature;
 import tn.amin.mpro2.features.tasker.TaskerEventTypingIndicatorFeature;
@@ -44,6 +45,7 @@ public class MProFeatureManager extends FeatureManager {
         addFeature(new DefaultCameraFeature(gateway));
         addFeature(new MediaTranscodeFeature(gateway));
         addFeature(new AdBlockFeature(gateway));
+        addFeature(new UnsentNotificationRemoveFeature(gateway));
 
         // Tasker features
         addFeature(new TaskerEventMessageFeature(gateway));

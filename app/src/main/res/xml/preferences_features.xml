@@ -30,6 +30,10 @@
         android:title="@string/pref_disable_typing_indicator" />
     <SwitchPreference
         android:defaultValue="true"
+        android:key="mpro_unsentNotif"
+        android:title="@string/pref_disable_notification_removal" />
+    <SwitchPreference
+        android:defaultValue="true"
         android:key="mpro_conversation_lock"
         android:title="@string/pref_enable_conversation_lock" />
     <SwitchPreference

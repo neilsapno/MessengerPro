@@ -13,6 +13,7 @@ import tn.amin.mpro2.hook.all.ThreadAttrsHook;
 import tn.amin.mpro2.hook.all.TypingIndicatorReceivedHook;
 import tn.amin.mpro2.hook.all.TypingIndicatorSentHook;
 import tn.amin.mpro2.hook.all.UIColorsHook;
+import tn.amin.mpro2.hook.all.UnsentNotificationRemoveHook;
 import tn.amin.mpro2.orca.OrcaGateway;
 
 public class MProHookManager extends HookManager {
@@ -34,5 +35,6 @@ public class MProHookManager extends HookManager {
         addHook(new UIColorsHook());
         addHook(new ThreadAttrsHook());
         addHook(new AdBlockHook());
+        addHook(new UnsentNotificationRemoveHook());
     }
 }
